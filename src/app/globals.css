@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    --background: 36 33% 97%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 221 100% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 168 94% 68%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 36 20% 94%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 12 100% 65%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 36 15% 88%;
+    --input: 36 15% 88%;
+    --ring: 221 100% 52%;
+  }
+
+  .dark {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 221 100% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 168 60% 40%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 12 100% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 221 100% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60;
+  }
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-lg;
+  }
+  .glass-dark {
+    @apply bg-black/10 backdrop-blur-xl border border-white/10 shadow-lg;
+  }
+  .shimmer-bg {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background-size: 200% 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+/* Focus styles for WCAG */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: hsl(var(--primary) / 0.3);
+  color: hsl(var(--foreground));
+}
