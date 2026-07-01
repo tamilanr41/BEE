@@ -1,6 +1,8 @@
 [build]
   command = "npx prisma generate && npm run build"
-  publish = "."
+
+[build.environment]
+  DATABASE_URL = "postgresql://localhost:5432/dummy?connect_timeout=5"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
