@@ -65,6 +65,7 @@
     "zustand": "^4.5.0"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^5.15.12",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20.11.16",
     "@types/react": "^18.2.55",
